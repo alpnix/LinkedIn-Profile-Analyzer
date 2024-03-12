@@ -16,10 +16,12 @@ def get_links(soup):
     return soup.find_all('a')
 
 def get_metatags(soup):
-    metatags = []
-    for metatag in soup.find_all('meta'):
-        metatags.append(metatag)
-    return metatags
+    # metatags = []
+    # for metatag in soup.find_all('meta'):
+    #     metatags.append(metatag.get('name'))
+    # return metatags
+
+    return soup.find_all('meta')
 
 
 soup = BeautifulSoup(get_html(URL), 'html.parser')
