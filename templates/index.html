@@ -1,1 +1,26 @@
-<h1>Main page with the Input</h1>
+<!DOCTYPE html lang="en">
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SEO Analyzer</title>
+</head>
+
+<body>
+  <h1>SEO Analyzer</h1>
+
+  <form action="" method="post">
+    <label for="url">Webpage URL</label><br>
+    <input type="text" id="url" name="url"><br>
+    <input type="submit" value="Get SEO Advice">
+  </form><br>
+
+  {% if url %}
+  The following link has been received: 
+  <ul>
+    <li>{{ url }}</li>
+  </ul>
+  {% endif %}
+</body>
+</html>
