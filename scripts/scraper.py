@@ -15,7 +15,7 @@ def get_links(soup):
     # links.append(link.get('href'))
     # return links
 
-    return soup.find_all('a')
+    return soup.find_all("a")
 
 
 def get_metatags(soup):
@@ -24,10 +24,10 @@ def get_metatags(soup):
     #     metatags.append(metatag.get('name'))
     # return metatags
 
-    return soup.find_all('meta')
+    return soup.find_all("meta")
 
 
-soup = BeautifulSoup(get_html(URL), 'html.parser')
+soup = BeautifulSoup(get_html(URL), "html.parser")
 
 # printing link tags
 for link in get_links(soup):
