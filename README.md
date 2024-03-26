@@ -1,4 +1,4 @@
-# SEO Analyzer
+# LinkedIn Profile Analyzer (previously SEO Analyzer)
 
 Group #4: 
 - Alp Niksarli (Product Owner, Developer)
