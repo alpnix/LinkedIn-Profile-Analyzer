@@ -8,7 +8,7 @@ from openai import OpenAI
 
 # load_dotenv()
 
-key = "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"
+key = 
 
 
 def profile_keyword_extraction(profile):
