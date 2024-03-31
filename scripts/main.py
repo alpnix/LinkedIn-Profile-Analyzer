@@ -8,7 +8,7 @@ from openai import OpenAI
 
 # load_dotenv()
 
-api_key = "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"
+key = "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"
 
 
 def profile_keyword_extraction(profile):
@@ -26,7 +26,7 @@ def evaluate(profile_keywords, job):
         job, profile_keywords
     )
 
-    client = OpenAI(api_key=api_key)
+    client = OpenAI(api_key=key)
     completion = client.chat.completions.create(
         model="gpt-4",
         messages=[
