@@ -4,9 +4,6 @@ import ast
 
 from openai import OpenAI
 
-from dotenv import load_dotenv
-
-load_dotenv()
 
 key = "placeholder"
 
