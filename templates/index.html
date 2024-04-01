@@ -28,6 +28,7 @@
             flex-direction: column;
         }
         input[type="text"] {
+            max-width: 800px;
             font-family: 'Courier New', Courier, monospace;
             margin: 10px 0;
             padding: 8px;
@@ -36,6 +37,7 @@
             border-radius: 4px;
         }
         button {
+            max-width: 800px;
             font-family: 'Courier New', Courier, monospace;
             background-color: #8a7e72;
             color: white;
@@ -48,20 +50,71 @@
         button:hover {
             background-color: #6d5f53;
         }
+
+        .linkedin_file {
+            max-width: 800px;
+            display: inline-block;
+            padding: 10px;
+            background-color: gray;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 10px;
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        .linkedin_file:hover {
+            background-color: #6d5f53;
+        }
+
+        .profile_feedback {
+            max-width: 800px;
+            font-family: 'Courier New', Courier, monospace;
+            background-color: white; /* White background */
+            color: #3e3535; /* Text color */
+            border: 1px solid #c4b3a7; /* Border color */
+            border-radius: 4px; /* Rounded corners */
+            padding: 8px; /* Padding inside the div */
+            margin: 10px 0; /* Margin for spacing */
+            overflow: auto; /* Adds scrollbars if needed */
+        }
+
+
     </style>
 </head>
 <body>
-    <div class="container">
-        <h2>LinkedIn Profile Analyzer</h2>
+    <div class="input">
+        <h2>LinkedIn Profile SEO Analyzer</h2>
         <form>
             <label for="linkedin">LinkedIn Profile</label>
             <input type="text" id="linkedin" name="linkedin" placeholder="Enter your LinkedIn profile URL">
+
+
+            <label for="linkedin_file" class="linkedin_file">Or: Submit LinkedIn Profile PDF</label>
+            <input type="file" name="linkedin_file" id="linkedin_file" style="display: none;">
+
+            <br>
             
-            <label for="dreamjob">Dream Job Role</label>
-            <input type="text" id="dreamjob" name="dreamjob" placeholder="Your dream job role">
+            <label for="job">Dream Job Role</label>
+            <input type="text" id="job" name="job" placeholder="Your dream job role">
             
             <button type="submit">Submit</button>
         </form>
+    </div>
+
+    <!-- following dashboard set to display: none before submit button -->
+    <div class="dashboard" style="display: block;">
+        <p>Profile Feedback</p>
+        <div class="profile_feedback">
+            <div id="profile_feedback">
+                {{profile_feedback}}
+            </div>
+        </div>
+        <div class="career_fairs"></div>
+        <div class="jobs"></div>
+        <div class="courses"></div>
+
     </div>
 </body>
 </html>

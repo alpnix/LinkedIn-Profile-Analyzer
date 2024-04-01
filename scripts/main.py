@@ -4,11 +4,11 @@ import ast
 
 from openai import OpenAI
 
-# from dotenv import load_dotenv
+from dotenv import load_dotenv
 
-# load_dotenv()
+load_dotenv()
 
-key = 
+# key = "placeholder"
 
 
 def profile_keyword_extraction(profile):
@@ -26,7 +26,7 @@ def evaluate(profile_keywords, job):
         job, profile_keywords
     )
 
-    client = OpenAI(api_key=key)
+    # client = OpenAI(api_key=key)
     completion = client.chat.completions.create(
         model="gpt-4",
         messages=[
