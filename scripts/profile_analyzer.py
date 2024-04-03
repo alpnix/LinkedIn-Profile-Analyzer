@@ -8,7 +8,7 @@ from openai import OpenAI
 key = "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"
 
 
-class profile_analyzer:
+class ProfileAnalyzer:
     def __init__(self, profile, job):
         self.profile = profile
         self.job = job

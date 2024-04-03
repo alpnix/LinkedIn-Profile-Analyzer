@@ -2,7 +2,7 @@ import requests
 from bs4 import BeautifulSoup
 
 
-class job_scraper:
+class JobScraper:
     def __init__(self, keywords, location):
         self.keywords = keywords
         self.location = location
