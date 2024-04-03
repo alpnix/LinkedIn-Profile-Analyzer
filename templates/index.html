@@ -10,9 +10,10 @@
             background-color: #f0e4d7;
             color: #3e3535;
             padding: 20px;
+            text-align: center;
         }
         .container {
-            max-width: 600px;
+            width: 400px;
             margin: auto;
             background-color: #fbf0e4;
             padding: 20px;
@@ -28,16 +29,16 @@
             flex-direction: column;
         }
         input[type="text"] {
-            max-width: 800px;
+            width: 400px;
             font-family: 'Courier New', Courier, monospace;
-            margin: 10px 0;
+            margin: auto;
             padding: 8px;
             background-color: #e8dfd8;
             border: 1px solid #c4b3a7;
             border-radius: 4px;
         }
         button {
-            max-width: 800px;
+            width: 400px;
             font-family: 'Courier New', Courier, monospace;
             background-color: #8a7e72;
             color: white;
@@ -46,6 +47,7 @@
             border-radius: 4px;
             cursor: pointer;
             margin-top: 10px;
+            margin: auto;
         }
         button:hover {
             background-color: #6d5f53;
@@ -54,14 +56,14 @@
 
 
         .profile_feedback {
-            max-width: 800px;
+            width: 70%;
             font-family: 'Courier New', Courier, monospace;
             background-color: white; /* White background */
             color: #3e3535; /* Text color */
             border: 1px solid #c4b3a7; /* Border color */
             border-radius: 4px; /* Rounded corners */
             padding: 8px; /* Padding inside the div */
-            margin: 10px 0; /* Margin for spacing */
+            margin:auto; /* Margin for spacing */
             overflow: auto; /* Adds scrollbars if needed */
         }
 
@@ -71,12 +73,17 @@
             padding: 8px;
             text-align: center; /* Center the text horizontally within the cell */
         }
-        .jobs-table {
-        width: 100%;
+        .jobs-table, .courses-table {
+        width: 70%;
         margin: auto; /* Center the table horizontally */
         border-collapse: collapse;
         margin-top: 15px;
         }
+
+        p {
+            text-align: center;
+        }
+
 
 
     </style>
@@ -92,13 +99,15 @@
             <br>
 
             <label for="linkedin_file" class="linkedin_file">Or: Submit Your LinkedIn Profile PDF Here</label>
-            <input required type="file" name="linkedin_file" id="linkedin_file">
+            <input required type="file" name="linkedin_file" id="linkedin_file" style="margin: auto;">
 
             <br>
             
             <label for="job">Dream Job Role</label>
             <input required type="text" id="job" name="job" placeholder="Your dream job role">
             
+            <br>
+
             <button type="submit">Submit</button>
         </form>
     </div>
@@ -137,7 +146,7 @@
         </div>
         <div class="courses">
             <p>Courses</p>
-            <table class="course-table">
+            <table class="courses-table">
                 <thead>
                   <tr>
                     <th>Skills</th>
