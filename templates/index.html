@@ -80,18 +80,32 @@
             overflow: auto; /* Adds scrollbars if needed */
         }
 
+        th,
+        td {
+            border: 1px solid white;
+            padding: 8px;
+            text-align: center; /* Center the text horizontally within the cell */
+        }
+        .jobs-table {
+        width: 100%;
+        margin: auto; /* Center the table horizontally */
+        border-collapse: collapse;
+        margin-top: 15px;
+        }
+
 
     </style>
 </head>
 <body>
     <div class="input">
         <h2>LinkedIn Profile SEO Analyzer</h2>
-        <form>
+        <form action="/submit" method="post">
+
             <label for="linkedin">LinkedIn Profile</label>
             <input type="text" id="linkedin" name="linkedin" placeholder="Enter your LinkedIn profile URL">
 
 
-            <label for="linkedin_file" class="linkedin_file">Or: Submit LinkedIn Profile PDF</label>
+            <label for="linkedin_file" class="linkedin_file">Or: Submit Your LinkedIn Profile PDF Here</label>
             <input type="file" name="linkedin_file" id="linkedin_file" style="display: none;">
 
             <br>
@@ -111,8 +125,30 @@
                 {{profile_feedback}}
             </div>
         </div>
-        <div class="career_fairs"></div>
-        <div class="jobs"></div>
+        
+        <p>Jobs</p>
+        <div class="jobs">
+            <table class="jobs-table">
+                <thead>
+                  <tr>
+                    <th>Company</th>
+                    <th>Job Title</th>
+                    <th>Seniority</th>
+                    <th>Link</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for row in jobs %}
+                  <tr>
+                    <td>{{ row[0] }}</td>
+                    <td>{{ row[1] }}</td>
+                    <td>{{ row[2] }}</td>
+                    <td><a href="{{ row[3] }}" target="_blank">Link</a></td>
+                  </tr>
+                  {% endfor %}
+                </tbody>
+            </table>
+        </div>
         <div class="courses"></div>
 
     </div>

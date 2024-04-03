@@ -82,5 +82,5 @@ class JobScraper:
 
 
 if __name__ == "__main__":
-    scraper = job_scraper("Software Engineer", "New York")
+    scraper = JobScraper("Software Engineer", "New York")
     print(scraper.scrape())

@@ -56,7 +56,7 @@ class ProfileAnalyzer:
 
 
 if __name__ == "__main__":
-    profile = profile_analyzer(
+    profile = ProfileAnalyzer(
         """
 I am a third-year computer science major and an international student at Davidson College. I am pursuing the Columbia Combined Plan, where I will spend my fourth and fifth undergrad years at the School of Engineering at Columbia University. I will graduate in 2026 with a BS from Davidson College and a BSE from Columbia University, both in CS.
 

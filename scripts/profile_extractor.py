@@ -29,6 +29,6 @@ class Profile:
 
 
 if __name__ == "__main__":
-    profile = profile("profiles/profile.pdf")
+    profile = Profile("profiles/profile.pdf")
     text = profile.get_text()
     print(text)
