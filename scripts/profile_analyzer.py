@@ -5,7 +5,7 @@ import ast
 from openai import OpenAI
 
 
-key = "placeholder"
+key = "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"
 
 
 class profile_analyzer:
@@ -21,6 +21,8 @@ class profile_analyzer:
         self.profile_keywords = profile_keywords
 
     def analyze(self):
+        self.profile_keyword_extraction()
+
         prompt = """
         I want to be a {}. These are some keywords of my experience: {}. 
         How much does my experience keywords eval with the job's technical and softskills? 
@@ -40,7 +42,7 @@ class profile_analyzer:
         response = completion.choices[
             0
         ].message.content  # string representation of a list
-        print(response)
+        # print(response)
 
         skills_start = response.index("[")
         skills_end = response.index("]")
@@ -49,5 +51,19 @@ class profile_analyzer:
             response[skills_start : skills_end + 1]
         )  # turn string into list
 
-        print(eval, "***", skills)
+        print(eval, "\n", skills)
         return eval, skills
+
+
+if __name__ == "__main__":
+    profile = profile_analyzer(
+        """
+I am a third-year computer science major and an international student at Davidson College. I am pursuing the Columbia Combined Plan, where I will spend my fourth and fifth undergrad years at the School of Engineering at Columbia University. I will graduate in 2026 with a BS from Davidson College and a BSE from Columbia University, both in CS.
+
+I love coding - solving complex problems and shipping codes used by millions excite me. My favorite tools are Python/Flask, Java, Javascript, SQL, and HTML/CSS, and I am familiar with cloud platforms like AWS, Azure, and Google Cloud. I have built and deployed several cloud-based Python programs to solve real-life problems for my school's VR lab, companies, and my own project. I am pursuing a career in software engineering.
+
+I am currently the sponsorship lead at Hack@Davidson, a Major League Hacking event.
+                               """,
+        "Software Engineer",
+    )
+    print(profile.analyze())
