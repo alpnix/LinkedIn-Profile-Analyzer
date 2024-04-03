@@ -1,7 +1,5 @@
 from flask import Flask, render_template, request
-import linkedin_scraper
-import profile_analyzer
-import profile_extractor
+from scripts import linkedin_scraper, profile_extractor, profile_analyzer
 
 
 app = Flask(__name__)
