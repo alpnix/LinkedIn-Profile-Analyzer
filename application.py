@@ -41,7 +41,10 @@ def submit():
     # print(type(courses[0]))
 
     return render_template(
-        "index.html", profile_feedback=profile_feedback, jobs=job_data, courses=courses
+        "index.html",
+        profile_feedback=profile_feedback + str(recommended_skills),
+        jobs=job_data,
+        courses=courses,
     )
 
 
