@@ -2,8 +2,8 @@ from PyPDF2 import PdfReader
 
 
 class Profile:
-    def __init__(self, filepath: str) -> None:
-        self.reader = PdfReader(filepath)
+    def __init__(self, fileobject):
+        self.reader = PdfReader(fileobject)
 
     def get_text(self):
         text = " ".join([page.extract_text() for page in self.reader.pages])
@@ -29,6 +29,6 @@ class Profile:
 
 
 if __name__ == "__main__":
-    profile = Profile("profiles/profile.pdf")
+    profile = Profile("profiles/sky-luo.pdf")
     text = profile.get_text()
     print(text)

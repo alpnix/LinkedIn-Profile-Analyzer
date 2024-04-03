@@ -52,7 +52,7 @@ class ProfileAnalyzer:
         )  # turn string into list
 
         print(eval, "\n", skills)
-        return eval, skills
+        return (eval, skills)
 
 
 if __name__ == "__main__":
