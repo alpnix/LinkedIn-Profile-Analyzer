@@ -77,6 +77,11 @@
         a:hover {
             text-decoration: underline;
         }
+
+        #submit-container {
+            display:flex;
+            gap: 10px;
+        }
     </style>
 </head>
 
@@ -100,7 +105,9 @@
             
             <br>
 
-            <button type="submit">Submit</button>
+            <div id="submit-container">
+                <button type="submit" onclick="displayLoadMessage()">Submit</button>
+            </div>
         </form>
     </div>
 
@@ -159,5 +166,17 @@
         </div>
 
     </div>
+
+    <script>
+        function displayLoadMessage() {
+            var filename = document.getElementById("linkedin_file").files[0].name;
+            var job = document.getElementById("job").value;
+
+            var loadMessage = `Profile ${filename} and job ${job} received! Feedback usually takes ~15 seconds to load.`;
+            var loadMessageElement = document.createTextNode(loadMessage);
+
+            document.getElementById("submit-container").appendChild(loadMessageElement);
+        }
+    </script>
 </body>
 </html>
