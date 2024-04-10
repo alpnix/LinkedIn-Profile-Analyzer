@@ -64,6 +64,8 @@ class JobScraper:
                     .get("href")
                 )
 
+                # Scrape the number of applicants
+                # Attempt to find the number of applicants in both possible elements
                 applicants_element = job_soup.find("figcaption", {"class": "num-applicants__caption"}) or \
                                      job_soup.find("span", {"class": "num-applicants__caption"})
                 number_of_applicants = applicants_element.text.strip() if applicants_element else "Not available"
@@ -87,5 +89,5 @@ class JobScraper:
 
 
 if __name__ == "__main__":
-    scraper = JobScraper("Software Engineer", "New York")
+    scraper = JobScraper("Software Engineer", "Charlotte")
     print(scraper.scrape())

@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request
+import openai
 from scripts import (
     linkedin_scraper,
     profile_extractor,
