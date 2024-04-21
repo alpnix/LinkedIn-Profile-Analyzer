@@ -24,7 +24,7 @@
       .profile_feedback,
       .jobs,
       .courses {
-        max-width: 600px;
+        max-width: 650px;
         margin: auto;
         background-color: #005682;
         padding: 20px;
@@ -163,8 +163,8 @@
         <br />
 
 
-        <input type="checkbox" id="tos" name="tos" value="agree">
-        <label for="tos-checkbox">I agree to release permission to use my LinkedIn profile information.</label><br><br>
+        <input type="checkbox" id="tos" name="tos" value="agree" style="display: {{ tos_visibility }};">
+        <label for="tos-checkbox" style="display: {{ tos_visibility }};">I agree to release permission to use my LinkedIn profile information.</label><br><br>
 
         <p style="color: red;"> {{ tos_message }} </p>
         
@@ -184,7 +184,7 @@
       </p>
 
       <div class="profile_feedback">
-        <div id="profile_feedback">{{profile_feedback}}</div>
+        <div id="profile_feedback" style="line-height: 1.5;">{{profile_feedback}}</div>
       </div>
 
       <p>Jobs</p>

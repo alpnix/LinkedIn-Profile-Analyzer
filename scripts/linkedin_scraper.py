@@ -3,7 +3,7 @@ from bs4 import BeautifulSoup
 
 
 class JobScraper:
-    def __init__(self, keywords, location):
+    def __init__(self, keywords, location="United States"):
         self.keywords = keywords
         self.location = location
 
@@ -64,19 +64,32 @@ class JobScraper:
                     .get("href")
                 )
 
-                applicants_element = job_soup.find("figcaption", {"class": "num-applicants__caption"}) or \
-                                     job_soup.find("span", {"class": "num-applicants__caption"})
-                number_of_applicants = applicants_element.text.strip() if applicants_element else "Not available"
+                applicants_element = job_soup.find(
+                    "figcaption", {"class": "num-applicants__caption"}
+                ) or job_soup.find("span", {"class": "num-applicants__caption"})
+                number_of_applicants = (
+                    applicants_element.text.strip()
+                    if applicants_element
+                    else "Not available"
+                )
 
                 # Append the job details to the job_data list
-                if all([company_name, job_title, job_seniority, job_link, number_of_applicants]):
+                if all(
+                    [
+                        company_name,
+                        job_title,
+                        job_seniority,
+                        job_link,
+                        number_of_applicants,
+                    ]
+                ):
                     job_data.append(
                         {
                             "company_name": company_name,
                             "job_title": job_title,
                             "job_seniority": job_seniority,
                             "job_link": job_link,
-                            "number_of_applicants": number_of_applicants
+                            "number_of_applicants": number_of_applicants,
                         }
                     )
             except Exception as e:

@@ -13,7 +13,9 @@ app = Flask(__name__)
 
 @app.route("/")
 def index():
-    return render_template("index.html", dashboard_visible="none")
+    return render_template(
+        "index.html", dashboard_visible="none", tos_visibility="inline"
+    )
 
 
 @app.route("/submit", methods=["POST"])
@@ -54,6 +56,7 @@ def submit():
         courses=courses,
         download_button_should_be_visible=True,
         dashboard_visible="block",
+        tos_visibility="none",
     )
 
 
