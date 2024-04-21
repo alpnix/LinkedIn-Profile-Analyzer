@@ -173,7 +173,7 @@
     </div>
 
     <!-- following dashboard set to display: none before submit button -->
-    <div class="dashboard" style="display: block">
+    <div id="dashboard" class="dashboard" style="display: block">
       <p>
         Profile Feedback 
         {% if download_button_should_be_visible %}
@@ -235,6 +235,7 @@
       </div>
     </div>
 
+    <!-- The script element below is used to convert the HMTL page to PDF -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script>
       function displayLoadMessage() {
@@ -256,17 +257,27 @@
       }
 
       function downloadReport() {
-        const bodyElement = document.getElementById("body");
+        // Source - https://stackoverflow.com/questions/71484593/converting-the-html-page-to-a-downloadable-pdf-with-a-button-click
+        const dashboard = document.getElementById("dashboard");
         const options = {
-            margin: 10,
-            filename: "report.pdf",
-            image: { type: 'jpeg', quality: 1.0 },
-            html2canvas: { scale: 4 },
-            jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
+          margin: 10,
+          filename: "report.pdf",
+          image: { 
+            type: 'jpeg', 
+            quality: 1.0 
+          },
+          html2canvas: { 
+            scale: 4 
+          },
+          jsPDF: { 
+            unit: 'mm', 
+            format: 'a4', 
+            orientation: 'portrait' 
+          }
         };
 
         // Downloads the PDF on the user's machine
-        html2pdf(bodyElement, options)
+        html2pdf(dashboard, options)
       }
     </script>
   </body>
