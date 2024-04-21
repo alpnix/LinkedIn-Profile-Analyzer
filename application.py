@@ -52,6 +52,7 @@ def submit():
         profile_feedback=profile_feedback + str(recommended_skills),
         jobs=job_data,
         courses=courses,
+        download_button_should_be_visible=True
     )
 
 

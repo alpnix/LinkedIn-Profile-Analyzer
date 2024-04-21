@@ -114,10 +114,14 @@
           transform: rotate(360deg);
         }
       }
+
+      #report-download-button {
+        float: right;
+      }
     </style>
   </head>
 
-  <body>
+  <body id="body">
     <div class="input">
       <h2>LinkedIn Profile SEO Analyzer</h2>
       <form action="/submit" method="post" enctype="multipart/form-data">
@@ -170,7 +174,13 @@
 
     <!-- following dashboard set to display: none before submit button -->
     <div class="dashboard" style="display: block">
-      <p>Profile Feedback</p>
+      <p>
+        Profile Feedback 
+        {% if download_button_should_be_visible %}
+          <button id="report-download-button" onclick="downloadReport()">Download Report</button>
+        {% endif %}
+      </p>
+
       <div class="profile_feedback">
         <div id="profile_feedback">{{profile_feedback}}</div>
       </div>
@@ -225,6 +235,7 @@
       </div>
     </div>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script>
       function displayLoadMessage() {
         var filename = document.getElementById("linkedin_file").files[0].name;
@@ -242,6 +253,20 @@
         document
           .getElementById("submit-container")
           .appendChild(loadSymbolElement);
+      }
+
+      function downloadReport() {
+        const bodyElement = document.getElementById("body");
+        const options = {
+            margin: 10,
+            filename: "report.pdf",
+            image: { type: 'jpeg', quality: 1.0 },
+            html2canvas: { scale: 4 },
+            jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
+        };
+
+        // Downloads the PDF on the user's machine
+        html2pdf(bodyElement, options)
       }
     </script>
   </body>
