@@ -40,11 +40,11 @@ def submit():
     courses_scraping = courses_scraper.CourseScraper(recommended_skills)
     courses = courses_scraping.scrape()
 
-    print(profile_feedback)
-    print(recommended_skills)
-    print(job_data)
+    # print(profile_feedback)
+    # print(recommended_skills)
+    # print(job_data)
     # print(type(job_data[0]))
-    print(courses)
+    # print(courses)
     # print(type(courses[0]))
 
     return render_template(
