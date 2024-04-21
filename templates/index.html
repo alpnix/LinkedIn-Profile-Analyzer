@@ -125,18 +125,21 @@
     <div class="input">
       <h2>LinkedIn Profile SEO Analyzer</h2>
       <form action="/submit" method="post" enctype="multipart/form-data">
-        <label for="linkedin">LinkedIn Profile</label>
-        <input
-          type="text"
-          id="linkedin"
-          name="linkedin"
-          placeholder="Enter your LinkedIn profile URL"
-        />
+        <div style="display: none;">
+          <label for="linkedin">LinkedIn Profile</label>
+          <input
+            type="text"
+            id="linkedin"
+            name="linkedin"
+            placeholder="Enter your LinkedIn profile URL"
+          />
+        </div>
+        
 
         <br />
 
         <label for="linkedin_file" class="linkedin_file"
-          >Or: Submit Your LinkedIn Profile PDF Here</label
+          >Submit Your LinkedIn Profile PDF Here</label
         >
         <input
           required
