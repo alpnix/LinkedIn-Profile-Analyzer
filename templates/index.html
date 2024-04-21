@@ -173,7 +173,12 @@
     </div>
 
     <!-- following dashboard set to display: none before submit button -->
-    <div id="dashboard" class="dashboard" style="display: block">
+    <!-- {% if dashboard_visible %}
+        <div style="display:block;">This element is visible</div>
+    {% else %}
+        <div style="display:none;">This element is hidden</div>
+    {% endif %} -->
+    <div id="dashboard" class="dashboard" style="display: {{ dashboard_visible }}">
       <p>
         Profile Feedback 
         {% if download_button_should_be_visible %}

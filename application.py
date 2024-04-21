@@ -13,7 +13,7 @@ app = Flask(__name__)
 
 @app.route("/")
 def index():
-    return render_template("index.html")
+    return render_template("index.html", dashboard_visible="none")
 
 
 @app.route("/submit", methods=["POST"])
@@ -52,7 +52,8 @@ def submit():
         profile_feedback=profile_feedback + str(recommended_skills),
         jobs=job_data,
         courses=courses,
-        download_button_should_be_visible=True
+        download_button_should_be_visible=True,
+        dashboard_visible="block",
     )
 
 
