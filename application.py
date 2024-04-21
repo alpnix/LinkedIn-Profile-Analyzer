@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request
+import openai
 from scripts import (
     linkedin_scraper,
     profile_extractor,
@@ -21,6 +22,12 @@ def submit():
     profile_pdf = request.files["linkedin_file"]
     job = request.form.get("job")
 
+    tos = request.form.get("tos")
+    if tos == None:
+        return render_template(
+            "index.html", tos_message="Agree to Information Release to Use Our Service"
+        )
+
     job_scraping = linkedin_scraper.JobScraper(keywords=job, location="United States")
     job_data = job_scraping.scrape()
 
@@ -33,15 +40,18 @@ def submit():
     courses_scraping = courses_scraper.CourseScraper(recommended_skills)
     courses = courses_scraping.scrape()
 
-    print(profile_feedback)
-    print(recommended_skills)
-    print(job_data)
+    # print(profile_feedback)
+    # print(recommended_skills)
+    # print(job_data)
     # print(type(job_data[0]))
-    print(courses)
+    # print(courses)
     # print(type(courses[0]))
 
     return render_template(
-        "index.html", profile_feedback=profile_feedback, jobs=job_data, courses=courses
+        "index.html",
+        profile_feedback=profile_feedback + str(recommended_skills),
+        jobs=job_data,
+        courses=courses,
     )
 
 

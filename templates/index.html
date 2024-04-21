@@ -1,162 +1,248 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Job Application</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LinkedIn Profile SEO Analyzer</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="icon" href="static/img/favicon.ico" type="image/x-icon" />
+
     <style>
-        body {
-            font-family: 'Courier New', Courier, monospace;
-            background-color: #f0e4d7;
-            color: #3e3535;
-            padding: 20px;
-        }
-        .container {
-            max-width: 600px;
-            margin: auto;
-            background-color: #fbf0e4;
-            padding: 20px;
-            border: 2px solid #d3c1b8;
-            box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);
-        }
-        h2 {
-            text-align: center;
-            color: #6d4c41;
-        }
-        form {
-            display: flex;
-            flex-direction: column;
-        }
-        input[type="text"] {
-            max-width: 800px;
-            font-family: 'Courier New', Courier, monospace;
-            margin: 10px 0;
-            padding: 8px;
-            background-color: #e8dfd8;
-            border: 1px solid #c4b3a7;
-            border-radius: 4px;
-        }
-        button {
-            max-width: 800px;
-            font-family: 'Courier New', Courier, monospace;
-            background-color: #8a7e72;
-            color: white;
-            padding: 10px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            margin-top: 10px;
-        }
-        button:hover {
-            background-color: #6d5f53;
-        }
+      body {
+        font-family: "Roboto", sans-serif;
+        background-color: #f4f2ee;
+        color: white;
+        margin: 0;
+        padding: 20px;
+      }
 
+      .input,
+      .dashboard,
+      .profile_feedback,
+      .jobs,
+      .courses {
+        max-width: 600px;
+        margin: auto;
+        background-color: #005682;
+        padding: 20px;
+        margin-bottom: 20px;
+        border-radius: 5px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
 
+      h2,
+      p {
+        margin: 0 0 20px 0;
+        font-weight: 700;
+      }
 
-        .profile_feedback {
-            max-width: 800px;
-            font-family: 'Courier New', Courier, monospace;
-            background-color: white; /* White background */
-            color: #3e3535; /* Text color */
-            border: 1px solid #c4b3a7; /* Border color */
-            border-radius: 4px; /* Rounded corners */
-            padding: 8px; /* Padding inside the div */
-            margin: 10px 0; /* Margin for spacing */
-            overflow: auto; /* Adds scrollbars if needed */
-        }
+      label {
+        font-weight: 700;
+      }
 
-        th,
-        td {
-            border: 1px solid white;
-            padding: 8px;
-            text-align: center; /* Center the text horizontally within the cell */
-        }
-        .jobs-table {
+      input[type="text"],
+      input[type="file"] {
+        width: 300px;
+        padding: 10px;
+        margin: 10px 0 20px 0;
+        border: none;
+        border-radius: 5px;
+      }
+
+      input[type="submit"] {
+        background-color: #0284c7;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+      }
+
+      input[type="submit"]:hover {
+        background-color: #0369a1;
+      }
+
+      .jobs-table,
+      .courses-table {
         width: 100%;
-        margin: auto; /* Center the table horizontally */
         border-collapse: collapse;
-        margin-top: 15px;
+      }
+
+      .jobs-table th,
+      .jobs-table td,
+      .courses-table th,
+      .courses-table td {
+        text-align: left;
+        padding: 8px;
+        border-bottom: 1px solid #dee2e6;
+      }
+
+      a {
+        color: #caffbf;
+        text-decoration: none;
+      }
+
+      a:hover {
+        text-decoration: underline;
+      }
+
+      #submit-container {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      /* Source - https://www.w3schools.com/howto/howto_css_loader.asp */
+      #load-symbol {
+        border: 16px solid #f3f3f3; /* Light grey */
+        border-top: 16px solid #0284c7; /* Blue */
+        border-radius: 50%;
+        width: 4px;
+        height: 4px;
+        animation: spin 2s linear infinite;
+      }
+
+      @keyframes spin {
+        0% {
+          transform: rotate(0deg);
         }
-
-
+        100% {
+          transform: rotate(360deg);
+        }
+      }
     </style>
-</head>
-<body>
+  </head>
+
+  <body>
     <div class="input">
-        <h2>LinkedIn Profile SEO Analyzer</h2>
-        <form action="/submit" method="post" enctype="multipart/form-data">
+      <h2>LinkedIn Profile SEO Analyzer</h2>
+      <form action="/submit" method="post" enctype="multipart/form-data">
+        <label for="linkedin">LinkedIn Profile</label>
+        <input
+          type="text"
+          id="linkedin"
+          name="linkedin"
+          placeholder="Enter your LinkedIn profile URL"
+        />
 
-            <label for="linkedin">LinkedIn Profile</label>
-            <input type="text" id="linkedin" name="linkedin" placeholder="Enter your LinkedIn profile URL">
+        <br />
 
-            <br>
+        <label for="linkedin_file" class="linkedin_file"
+          >Or: Submit Your LinkedIn Profile PDF Here</label
+        >
+        <input
+          required
+          type="file"
+          name="linkedin_file"
+          id="linkedin_file"
+          style="margin: auto"
+        />
 
-            <label for="linkedin_file" class="linkedin_file">Or: Submit Your LinkedIn Profile PDF Here</label>
-            <input required type="file" name="linkedin_file" id="linkedin_file">
+        <br />
 
-            <br>
-            
-            <label for="job">Dream Job Role</label>
-            <input required type="text" id="job" name="job" placeholder="Your dream job role">
-            
-            <button type="submit">Submit</button>
-        </form>
+        <label for="job">Dream Job Role</label>
+        <input
+          required
+          type="text"
+          id="job"
+          name="job"
+          placeholder="Your dream job role"
+        />
+
+        <br />
+
+
+        <input type="checkbox" id="tos" name="tos" value="agree">
+        <label for="tos-checkbox">I agree to release permission to use my LinkedIn profile information.</label><br><br>
+
+        <p style="color: red;"> {{ tos_message }} </p>
+        
+
+        <div id="submit-container">
+          <button type="submit" onclick="displayLoadMessage()">Submit</button>
+        </div>
+      </form>
     </div>
 
     <!-- following dashboard set to display: none before submit button -->
-    <div class="dashboard" style="display: block;">
-        <p>Profile Feedback</p>
-        <div class="profile_feedback">
-            <div id="profile_feedback">
-                {{profile_feedback}}
-            </div>
-        </div>
-        
-        <p>Jobs</p>
-        <div class="jobs">
-            <table class="jobs-table">
-                <thead>
-                  <tr>
-                    <th>Company</th>
-                    <th>Job Title</th>
-                    <th>Seniority</th>
-                    <th>Link</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {% for row in jobs %}
-                  <tr>
-                    <td>{{ row['company_name'] }}</td>
-                    <td>{{ row['job_title'] }}</td>
-                    <td>{{ row['job_seniority'] }}</td>
-                    <td><a href="{{ row['job_link'] }}" target="_blank">Link</a></td>
-                  </tr>
-                  {% endfor %}
-                </tbody>
-            </table>
-        </div>
-        <div class="courses">
-            <p>Courses</p>
-            <table class="course-table">
-                <thead>
-                  <tr>
-                    <th>Skills</th>
-                    <th>Course Title</th>
-                    <th>Link</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {% for row in courses %}
-                  <tr>
-                    <td>{{ row['skills'] }}</td>
-                    <td>{{ row['course_title'] }}</td>
-                    <td><a href="{{ row['course_link'] }}" target="_blank">Link</a></td>
-                  </tr>
-                  {% endfor %}
-                </tbody>
-            </table>
-        </div>
+    <div class="dashboard" style="display: block">
+      <p>Profile Feedback</p>
+      <div class="profile_feedback">
+        <div id="profile_feedback">{{profile_feedback}}</div>
+      </div>
 
+      <p>Jobs</p>
+      <div class="jobs">
+        <table class="jobs-table">
+          <thead>
+            <tr>
+              <th>Company</th>
+              <th>Job Title</th>
+              <th>Seniority</th>
+              <th>Applicants</th>
+              <th>Link</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for row in jobs %}
+            <tr>
+              <td>{{ row['company_name'] }}</td>
+              <td>{{ row['job_title'] }}</td>
+              <td>{{ row['job_seniority'] }}</td>
+              <td>{{ row['number_of_applicants'] }}</td>
+              <td><a href="{{ row['job_link'] }}" target="_blank">Link</a></td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+      <p>Courses</p>
+      <div class="courses">
+        <table class="courses-table">
+          <thead>
+            <tr>
+              <th>Skills</th>
+              <th>Course Title</th>
+              <th>Link</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for row in courses %}
+            <tr>
+              <td>{{ row['skills'] }}</td>
+              <td>{{ row['course_title'] }}</td>
+              <td>
+                <a href="{{ row['course_link'] }}" target="_blank">Link</a>
+              </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
     </div>
-</body>
+
+    <script>
+      function displayLoadMessage() {
+        var filename = document.getElementById("linkedin_file").files[0].name;
+        var job = document.getElementById("job").value;
+
+        var loadMessage = `Profile ${filename} and job ${job} received! Feedback usually takes ~15 seconds to load.`;
+        var loadMessageElement = document.createTextNode(loadMessage);
+
+        var loadSymbolElement = document.createElement("div");
+        loadSymbolElement.setAttribute("id", "load-symbol");
+
+        document
+          .getElementById("submit-container")
+          .appendChild(loadMessageElement);
+        document
+          .getElementById("submit-container")
+          .appendChild(loadSymbolElement);
+      }
+    </script>
+  </body>
 </html>

@@ -1,17 +1,16 @@
 import requests
 from bs4 import BeautifulSoup
 
-class CourseScraper: 
+
+class CourseScraper:
     def __init__(self, skills):
         self.skills = skills
 
     def scrape(self):
-        coursera_search_url = (
-            "https://www.coursera.org/search?"
-        )
+        coursera_search_url = "https://www.coursera.org/search?"
         course_data = []
 
-        for skill in self.skills: 
+        for skill in self.skills:
 
             # Format the search URL with the search query and other filters
             search_url = f"{coursera_search_url}query={skill.replace(' ', '%20')}"
@@ -23,19 +22,15 @@ class CourseScraper:
             soup = BeautifulSoup(response.text, "html.parser")
 
             # Find all courses on the page
-            courses_on_the_page = soup.select(".cds-ProductCard-base")
+            courses_on_the_page = soup.select(".cds-ProductCard-base")[:2]
+            # print(len(courses_on_the_page))
 
             # Extract details for each job
             for course in courses_on_the_page:
                 try:
-                    course_title = (
-                        course.find("h3")
-                        .text.strip()
-                    )
-                    course_link = (
-                        "https://www.coursera.org" +
-                        course.find("a")
-                        .get("href")
+                    course_title = course.find("h3").text.strip()
+                    course_link = "https://www.coursera.org" + course.find("a").get(
+                        "href"
                     )
 
                     # Append the course details to the course_data list
@@ -47,14 +42,15 @@ class CourseScraper:
                                 "course_link": course_link,
                             }
                         )
-                
+
                 except Exception as e:
                     # Handle potential errors in course detail extraction
                     print(f"Error: {e}")
 
-        return course_data
+        return course_data[:10]
 
 
 if __name__ == "__main__":
     scraper = CourseScraper(["Python Programming", "Data Science"])
+    # scraper.scrape()
     print(scraper.scrape())
