@@ -22,6 +22,12 @@ def submit():
     profile_pdf = request.files["linkedin_file"]
     job = request.form.get("job")
 
+    tos = request.form.get("tos")
+    if tos == None:
+        return render_template(
+            "index.html", tos_message="Agree to Information Release to Use Our Service"
+        )
+
     job_scraping = linkedin_scraper.JobScraper(keywords=job, location="United States")
     job_data = job_scraping.scrape()
 
