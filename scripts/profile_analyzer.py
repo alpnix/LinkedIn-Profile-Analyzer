@@ -9,6 +9,7 @@ load_dotenv()
 key = os.getenv("OPENAI_KEY")
 print(key)
 
+
 class ProfileAnalyzer:
     def __init__(self, profile, job):
         self.profile = profile

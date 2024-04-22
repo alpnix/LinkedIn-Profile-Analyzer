@@ -27,7 +27,9 @@ def submit():
     tos = request.form.get("tos")
     if tos == None:
         return render_template(
-            "index.html", tos_message="Agree to Information Release to Use Our Service"
+            "index.html",
+            tos_message="Agree to Information Release to Use Our Service",
+            dashboard_visible="none",
         )
 
     job_scraping = linkedin_scraper.JobScraper(keywords=job, location="United States")
