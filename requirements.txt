@@ -1,0 +1,7 @@
+dotenv
+requests
+bs4
+openai
+spacy
+ast
+PyPDF2

@@ -3,10 +3,11 @@ import spacy
 import ast
 
 from openai import OpenAI
+from dotenv import load_dotenv
 
-
-key = "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"
-
+load_dotenv()
+key = os.getenv("OPENAI_KEY")
+print(key)
 
 class ProfileAnalyzer:
     def __init__(self, profile, job):
