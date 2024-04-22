@@ -12,7 +12,7 @@ class JobScraper:
             "https://www.linkedin.com/jobs-guest/jobs/api/seeMoreJobPostings/search?"
         )
         # Format the search URL with the keywords and location
-        search_url = f"{linkedin_search_url}keywords={self.keywords}&location={self.location}&start=0"
+        search_url = f"{linkedin_search_url}keywords={self.keywords}&location={self.location}&start=1"
 
         # Send the HTTP request to LinkedIn
         response = requests.get(search_url)
