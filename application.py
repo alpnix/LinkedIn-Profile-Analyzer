@@ -34,6 +34,7 @@ def submit():
 
     job_scraping = linkedin_scraper.JobScraper(keywords=job, location="United States")
     job_data = job_scraping.scrape()
+    print(job_data)
 
     profile_extraction = profile_extractor.Profile(profile_pdf)
     profile_text = profile_extraction.get_text()

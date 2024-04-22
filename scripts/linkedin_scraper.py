@@ -94,6 +94,7 @@ class JobScraper:
                     )
             except Exception as e:
                 # Handle potential errors in job detail extraction
+                pass
                 print(f"Error: {e}")
 
         return job_data
