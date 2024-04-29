@@ -22,11 +22,13 @@ Navigate to the project directory:
 
 ```bash
 cd LinkedLeverage
+```
 
 Install the required dependencies:
 
 ```bash
 pip install -r requirements.txt
+```
 
 ### Usage
 
@@ -34,6 +36,7 @@ Run the Flask application:
 
 ```bash
 python application.py # or python3 depending on your environment setup
+```
 
 Access the web application by navigating to localhost:5000 in your web browser.
 
