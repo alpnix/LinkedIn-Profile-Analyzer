@@ -16,6 +16,7 @@ Clone the repository to your local machine:
 
 ```bash
 git clone https://github.com/alpnix/LinkedLeverage.git
+```
 
 Navigate to the project directory:
 
